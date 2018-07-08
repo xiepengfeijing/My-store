@@ -26,39 +26,21 @@ export default {
         password: ''
       }
     };
-	},
-	methods: {
-		// handleLogin() {
-		// 	this.$http
-		// 		.post('login', this.formData)
-		// 		.then((res) => {
-		// 			const data = res.data;
-		// 			const { meta: {status, msg }} = data;
-		// 			if (status === 200) {
-		// 				const token = data.data.token;
-		// 				console.log(token)
-		// 				//登录成功，跳转到首页
-		// 				//记录token,sessionstorage
-		// 				sessionStorage.setItem('token',token);
-		// 				this.$message.success(msg);
-		// 			} else {
-		// 				this.$message.error(msg);
-		// 			}
-		// 		});
-		// }
-		async handleLogin() {
-			const res = await this.$http.post('login', this.formData);
-			const data = res.data;
-			const { meta: {status, msg}} = data;
-			if(status === 200){
-				this.$message.success(msg);
-				const { data: {token}} = data;
-				sessionStorage.setItem('token',token);
-			} else {
-				this.$message.error(msg);
-			}
-		}
-	}
+  },
+  methods: {
+    async handleLogin() {
+      const res = await this.$http.post('login', this.formData);
+      const data = res.data;
+      const {meta: {status, msg}} = data;
+      if (status === 200) {
+        this.$message.success(msg);
+        const {data: {token}} = data;
+        sessionStorage.setItem('token', token);
+      } else {
+        this.$message.error(msg);
+      }
+    }
+  }
 };
 </script>
 
